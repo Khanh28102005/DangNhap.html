@@ -66,16 +66,20 @@
             text-decoration: underline;
         }
     </style>
+    <script>
+        function redirectToLab() {
+            window.location.href = "https://khanh28102005.github.io/lab2.html/";
+        }
+    </script>
 </head>
 <body>
 
 <div class="login-container">
     <h2>Đăng Nhập</h2>
-    <form>
+    <form onsubmit="event.preventDefault(); redirectToLab();">
         <input type="text" placeholder="Tên người dùng/Email" required>
         <input type="password" placeholder="Mật khẩu" required>
         <button type="submit">Đăng Nhập</button>
-        <a href="https://khanh28102005.github.io/lab2.html/" target="_blank">Đăng Nhập</a>
     </form>
     <div class="forgot-password">
         <a href="#">Quên mật khẩu?</a>
