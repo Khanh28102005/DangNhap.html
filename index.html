@@ -14,13 +14,17 @@
             height: 100vh;
             margin: 0;
         }
-        .login-container {
+        .login-container, .signup-container {
             background: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             width: 300px;
             text-align: center;
+            display: none; /* Ẩn hộp đăng ký */
+        }
+        .login-container.active, .signup-container.active {
+            display: block; /* Hiện hộp hiện tại */
         }
         h2 {
             margin-bottom: 20px;
@@ -65,10 +69,28 @@
         .forgot-password a:hover {
             text-decoration: underline;
         }
+        .signup-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
     </style>
     <script>
         function redirectToLab() {
             window.location.href = "https://khanh28102005.github.io/lab2.html/";
+        }
+        function toggleSignup() {
+            document.querySelector('.login-container').classList.toggle('active');
+            document.querySelector('.signup-container').classList.toggle('active');
+        }
+        window.onload = function() {
+            document.querySelector('.login-container').classList.add('active'); // Mặc định hiển thị đăng nhập
         }
     </script>
 </head>
@@ -83,6 +105,22 @@
     </form>
     <div class="forgot-password">
         <a href="#">Quên mật khẩu?</a>
+    </div>
+    <div class="signup-link">
+        <span>Chưa có tài khoản? </span><a href="#" onclick="toggleSignup();">Tạo tài khoản</a>
+    </div>
+</div>
+
+<div class="signup-container">
+    <h2>Tạo Tài Khoản</h2>
+    <form onsubmit="event.preventDefault(); alert('Tài khoản đã được tạo!'); toggleSignup();">
+        <input type="text" placeholder="Tên người dùng" required>
+        <input type="text" placeholder="Email" required>
+        <input type="password" placeholder="Mật khẩu" required>
+        <button type="submit">Tạo Tài Khoản</button>
+    </form>
+    <div class="signup-link">
+        <span>Đã có tài khoản? </span><a href="#" onclick="toggleSignup();">Đăng Nhập</a>
     </div>
 </div>
 
